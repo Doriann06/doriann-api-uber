@@ -24,7 +24,7 @@ if (empty($_GET['page'])){
             break;
         case 'clients':
             if (isset($url[1])){
-                echo "Afficher les information du client : ".$url[1];
+                echo $clientController->getClientById($url[1]);
             }else{
                 echo $clientController->getAllClients();
             }
