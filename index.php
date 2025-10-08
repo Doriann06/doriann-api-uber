@@ -10,7 +10,7 @@ $trajetController = new TrajetController();
 // Vérifie si le paramètre "page" est vide ou non présent dans l'URL
 if (empty($_GET['page'])){
     // Si le paramètre est vide, on affiche un message d'erreur
-    echo "La page n'existe pas";
+    echo "Cette page est introuvable";
 }else{
     $url= explode("/",$_GET['page']);
     switch($url[0]){
