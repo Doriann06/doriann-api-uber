@@ -39,7 +39,7 @@ if (empty($_GET['page'])){
             break;
             case 'trajets':
             if (isset($url[1])){
-                echo "Afficher les information du trajet : ".$url[1];
+                echo $trajetController->getTrajetById($url[1]);
             }else{
                 echo $trajetController->getAllTrajets();
             }
