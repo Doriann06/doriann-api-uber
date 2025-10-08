@@ -31,7 +31,7 @@ if (empty($_GET['page'])){
             break;
             case 'voitures':
             if (isset($url[1])){
-                echo "Afficher les information de la voiture : ".$url[1];
+                echo $voitureController->getVoitureById($url[1]);
             }else{
                 echo $voitureController->getAllVoitures();
             }
