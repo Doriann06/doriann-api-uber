@@ -16,8 +16,10 @@ if (empty($_GET['page'])){
     switch($url[0]){
         case 'chauffeurs':
             if (isset($url[2])){
-                echo $url[1];
-                echo $chauffeurController->getVoitureByChauffeurById($url[1]);
+                if ($url[2]=="voitures"){
+                    echo $chauffeurController->getVoitureByChauffeurById($url[1]);
+                }
+                
             } else if (isset($url[1])){
                 echo $chauffeurController->getChauffeurById($url[1]);
             }else{
