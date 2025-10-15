@@ -38,7 +38,18 @@ class ChauffeurModel
         $voitureByChauffeur= $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $voitureByChauffeur;
     }
+    public function createDBChauffeur($data){
+        $req ="INSERT INTO chauffeur (chauffeur_id,chauffeur_nom,chauffeur_telephone)
+                VALUES (:chauffeur_id, :chauffeur_nom,:chauffeur_telephone)";
+            $stmt =$this->pdo->prepare($req);
+            $stmt->bindParam(":chauffeur_id",$data['chauffeur_id'],PDO::PARAM_INT);
+            $stmt->bindParam(":chauffeur_nom",$data['chauffeur_nom'],PDO::PARAM_STR);
+            $stmt->bindParam(":chauffeur_telephone",$data['chauffeur_telephone'],PDO::PARAM_STR);
 
+            $stmt->execute();
+            $chauffeur=$this->getDBChauffeurById($data['chauffeur_id']);
+        return $chauffeur;
+    }
 }
 //$chauffeurModel=new ChauffeurModel();
 //print_r($chauffeurModel->getDBAllChauffeurs());
