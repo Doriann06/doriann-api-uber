@@ -54,11 +54,20 @@ if (empty($_GET['page'])){
                     }else{
                         echo $clientController->getAllClients();
                     }
-                    break;
-                    case "POST":
+                break;
+                case "POST":
+                    $data=json_decode(file_get_contents("php://input"),true);
+                    $clientController->createClient($data);
+                break;
+                case "PUT":
+                    if (isset($url[1])){
                         $data=json_decode(file_get_contents("php://input"),true);
-                        $clientController->createClient($data);
-                        break;   
+                        $clientController->updateClient($url[1],$data);
+                    } else{
+                        http_response_code(400);
+                        echo json_encode(["message"=>"ID du client manquant dans l'URL"]);
+                        }
+                break;   
             }
             break;
             
