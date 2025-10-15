@@ -43,7 +43,11 @@ if (empty($_GET['page'])){
            
             break;
             case 'trajets':
-            if (isset($url[1])){
+                if (isset($url[2])){
+                    if ($url[2]=="details"){
+                        echo $trajetController->getDetailTrajetById($url[1]);
+                    }
+                }else if (isset($url[1])){
                 echo $trajetController->getTrajetById($url[1]);
             }else{
                 echo $trajetController->getAllTrajets();
